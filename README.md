@@ -1,4 +1,4 @@
-## Presentacion
+## Presentación
 
 Este proyecto individual ha sido realizado durante el primer año del Grado Superior de Animación 3D y videojuegos.    
 
