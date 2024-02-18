@@ -50,11 +50,16 @@ Por último, la función de “GroundCheck” generará un círculo cuya funció
 
 ## SCENE SETTINGS: Esta carpeta incluye los scripts relacionados con la configuración de las escenas.
 
-CameraFollow:
+CameraFollow: El script de “CameraFollow” se encarga de hacer que la cámara siga al jugador. Para ello, se han utilizado dos vectores: targetPosition y followPosition . El vector targetPosition siempre apunta a la posición del jugador, mientras que el vector followPosition utiliza un Slerp para que la posición de la cámara se aproxime a la del jugador mediante un movimiento más suavizado.
+
 [CameraFollow](Scripts/SceneSettings/CameraFollow.cs)
-SceneController:
+
+SceneController: El script de SceneController” se encarga de ejecutar las diferentes escenas que se puedan plantear en el diseño de Interfaz (UX y UI). En este caso, se haría uso de la herramienta “SceneManager” para controlar dicho cambio de escena, pasando únicamente el nombre de la escena a este script.
+
 [SceneController](Scripts/SceneSettings/SceneController.cs)
-FinalScene:
+
+FinalScene: El script de “FinalScene” se encarga de ejecutar una escena añadida al final del juego. El contenido de este script se puede añadir al “SceneController” perfectamente.
+
 [FinalScene](Scripts/SceneSettings/FinalScene.cs)
 
 ## WORLD MECHANICS: Esta carpeta incluye los scripts relacionados con los elementos del escenario.
