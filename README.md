@@ -10,7 +10,7 @@ Para conservar el orden dentro del proyecto se han creado varias carpetas, de ma
 
 ## ENEMY: Esta carpeta incluye los scripts relacionados con la configuración del enemigo.
 
-Emphasis(EnemyMovement:) El script de “EnemyMovement” consiste en un movimiento que utiliza el componente RigidBody para desplazarse en el plano XY. En cuanto a las variables utilizadas, he decidido crear “Headers” para clasificarlas según su uso. Las variables que he dejado públicas són variables que se asignan desde el inspector a conveniencia, cosa que implica más versatilidad para poder utilizar el mismo Script para más enemigos. Se pueden retocar parámetros como la fuerza de salto o la aceleración y deceleración del enemigo.
+Emphasis.Strong(EnemyMovement:) El script de “EnemyMovement” consiste en un movimiento que utiliza el componente RigidBody para desplazarse en el plano XY. En cuanto a las variables utilizadas, he decidido crear “Headers” para clasificarlas según su uso. Las variables que he dejado públicas són variables que se asignan desde el inspector a conveniencia, cosa que implica más versatilidad para poder utilizar el mismo Script para más enemigos. Se pueden retocar parámetros como la fuerza de salto o la aceleración y deceleración del enemigo.
 
 [EnemyMovement](Scripts/Enemy/EnemyMovement.cs) 
 
