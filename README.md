@@ -10,11 +10,11 @@ Para conservar el orden dentro del proyecto se han creado varias carpetas, de ma
 
 ## ENEMY: Esta carpeta incluye los scripts relacionados con la configuración del enemigo.
 
-<EnemyMovement:> El script de “EnemyMovement” consiste en un movimiento que utiliza el componente RigidBody para desplazarse en el plano XY. En cuanto a las variables utilizadas, he decidido crear “Headers” para clasificarlas según su uso. Las variables que he dejado públicas són variables que se asignan desde el inspector a conveniencia, cosa que implica más versatilidad para poder utilizar el mismo Script para más enemigos. Se pueden retocar parámetros como la fuerza de salto o la aceleración y deceleración del enemigo.
+Emphasis(EnemyMovement:) El script de “EnemyMovement” consiste en un movimiento que utiliza el componente RigidBody para desplazarse en el plano XY. En cuanto a las variables utilizadas, he decidido crear “Headers” para clasificarlas según su uso. Las variables que he dejado públicas són variables que se asignan desde el inspector a conveniencia, cosa que implica más versatilidad para poder utilizar el mismo Script para más enemigos. Se pueden retocar parámetros como la fuerza de salto o la aceleración y deceleración del enemigo.
 
 [EnemyMovement](Scripts/Enemy/EnemyMovement.cs) 
 
-<EnemyStateController:> El script de “EnemyStateController” se asemeja a  una máquina de estados que funciona con ayuda del Animator. El enemigo cuenta con tres estados funcionales: Idle, Patrol y Chase.
+Emphasis(EnemyStateController:) El script de “EnemyStateController” se asemeja a  una máquina de estados que funciona con ayuda del Animator. El enemigo cuenta con tres estados funcionales: Idle, Patrol y Chase.
 
 El enemigo funciona de la siguiente manera: cuando se inicia el ejecutable, el enemigo empieza desde el estado de Idle durante un tiempo determinado  (que se puede configurar en el Inspector) y cuando se alcanza ese tiempo, se cambia al estado de Patrol y el enemigo empieza a moverse. Para cambiar de estado, se utiliza la función “ChangeState”, que cambia el estado actual por uno nuevo. Estando en el estado de Patrol, el enemigo avanzará hasta la pared o abismo que haya en la dirección que avanzó (normalmente izquierda).
 
@@ -30,11 +30,11 @@ El script de “ReturnChase” sirve para cambiar al estado de Chase, y está se
 
 ## PLAYER: Esta carpeta incluye los scripts relacionados con la configuración del jugador.
 
-<PlayerData:> El script de “PlayerData” almacena todos los parámetros relacionados con el jugador que puedan variar en el gameplay de un videojuego. Algunos ejemplos serían la vida, la resistencia, los coleccionables, etc. Además de eso, también se encarga de gestionar los puntos de control y el “respawn” del jugador, de manera que cuando la vida sea 0 o inferior, el jugador regrese al último punto de control por el que haya pasado.
+Emphasis(PlayerData:) El script de “PlayerData” almacena todos los parámetros relacionados con el jugador que puedan variar en el gameplay de un videojuego. Algunos ejemplos serían la vida, la resistencia, los coleccionables, etc. Además de eso, también se encarga de gestionar los puntos de control y el “respawn” del jugador, de manera que cuando la vida sea 0 o inferior, el jugador regrese al último punto de control por el que haya pasado.
 
 [PlayerData](Scripts/Player/PlayerData.cs)
 
-<PlayerMovement:> El script de “PlayerMovement” es el script más complejo de este proyecto. Este script se encarga de gestionar el movimiento del jugador utilizando el componente RigidBody, y este se realizará mediante Inputs (botones) que se pueden cambiar en cualquier momento (programación / Input Manager). El personaje es capaz de caminar, saltar y ejecutar acelerones presionando cierta tecla. En cuanto a las variables utilizadas, al ser demasiadas y para conservar el orden y limpieza en el script, se han separado de la misma forma que el Enemigo (mediante “Headers”). La mayoría de variables que son públicas se pueden cambiar en el inspector a conveniencia, aunque también se le pueden asignar valores que sean predeterminados por programación.
+Emphasis(PlayerMovement:) El script de “PlayerMovement” es el script más complejo de este proyecto. Este script se encarga de gestionar el movimiento del jugador utilizando el componente RigidBody, y este se realizará mediante Inputs (botones) que se pueden cambiar en cualquier momento (programación / Input Manager). El personaje es capaz de caminar, saltar y ejecutar acelerones presionando cierta tecla. En cuanto a las variables utilizadas, al ser demasiadas y para conservar el orden y limpieza en el script, se han separado de la misma forma que el Enemigo (mediante “Headers”). La mayoría de variables que son públicas se pueden cambiar en el inspector a conveniencia, aunque también se le pueden asignar valores que sean predeterminados por programación.
  
 Se puede observar que la función de “Update” ejecuta varias funciones a la vez. Esto se hace con el objetivo de facilitar la lectura del código al programa, así como también para estructurar el código.
 La función de “Start” se asegura de que al comenzar el juego, el personaje esté mirando hacia la derecha y de que la gravedad se aplica correctamente. 
@@ -50,15 +50,15 @@ Por último, la función de “GroundCheck” generará un círculo cuya funció
 
 ## SCENE SETTINGS: Esta carpeta incluye los scripts relacionados con la configuración de las escenas.
 
-<CameraFollow:> El script de “CameraFollow” se encarga de hacer que la cámara siga al jugador. Para ello, se han utilizado dos vectores: targetPosition y followPosition . El vector targetPosition siempre apunta a la posición del jugador, mientras que el vector followPosition utiliza un Slerp para que la posición de la cámara se aproxime a la del jugador mediante un movimiento más suavizado.
+Emphasis(CameraFollow:) El script de “CameraFollow” se encarga de hacer que la cámara siga al jugador. Para ello, se han utilizado dos vectores: targetPosition y followPosition . El vector targetPosition siempre apunta a la posición del jugador, mientras que el vector followPosition utiliza un Slerp para que la posición de la cámara se aproxime a la del jugador mediante un movimiento más suavizado.
 
 [CameraFollow](Scripts/SceneSettings/CameraFollow.cs)
 
-<SceneController:> El script de SceneController” se encarga de ejecutar las diferentes escenas que se puedan plantear en el diseño de Interfaz (UX y UI). En este caso, se haría uso de la herramienta “SceneManager” para controlar dicho cambio de escena, pasando únicamente el nombre de la escena a este script.
+Emphasis(SceneController:) El script de SceneController” se encarga de ejecutar las diferentes escenas que se puedan plantear en el diseño de Interfaz (UX y UI). En este caso, se haría uso de la herramienta “SceneManager” para controlar dicho cambio de escena, pasando únicamente el nombre de la escena a este script.
 
 [SceneController](Scripts/SceneSettings/SceneController.cs)
 
-<FinalScene:> El script de “FinalScene” se encarga de ejecutar una escena añadida al final del juego. El contenido de este script se puede añadir al “SceneController” perfectamente.
+Emphasis(FinalScene:) El script de “FinalScene” se encarga de ejecutar una escena añadida al final del juego. El contenido de este script se puede añadir al “SceneController” perfectamente.
 
 [FinalScene](Scripts/SceneSettings/FinalScene.cs)
 
@@ -66,26 +66,26 @@ Por último, la función de “GroundCheck” generará un círculo cuya funció
 
 -----Collectables-----
 
-CoinSystem:
+Emphasis(CoinSystem:)
 [CoinSystem](Scripts/WorldMechanics/Collectionables/CoinSystem)
-KeySystem:
+Emphasis(KeySystem:)
 [KeySystem](Scripts/WorldMechanics/Collectionables/KeySystem)
 
 -----DetectionSystem------
 
-Checkpoint:
+Emphasis(Checkpoint:)
 [Checkpoint](Scripts/WorldMechanics/DetectionSystem/Checkpoint)
-TriggerDetect:
+Emphasis(TriggerDetect:)
 [TriggerDetect](Scripts/WorldMechanics/DetectionSystem/TriggerDetect)
 
 -----Hazards-----
 
-TriggerDamage:
+Emphasis(TriggerDamage:)
 [TriggerDamage](Scripts/WorldMechanics/Hazards/TriggerDamage)
 
 -----Mechanism-----
 
-PlatformSystem:
+Emphasis(PlatformSystem:)
 [PlatformSystem](Scripts/WorldMechanics/Mechanism/PlatformSystem)
 
 ## Unknown
