@@ -11,7 +11,9 @@ Para conservar el orden dentro del proyecto se han creado varias carpetas, de ma
 ## ENEMY: Esta carpeta incluye los scripts relacionados con la configuración del enemigo.
 
 EnemyMovement: El script de “EnemyMovement” consiste en un movimiento que utiliza el componente RigidBody para desplazarse en el plano XY. En cuanto a las variables utilizadas, he decidido crear “Headers” para clasificarlas según su uso. Las variables que he dejado públicas són variables que se asignan desde el inspector a conveniencia, cosa que implica más versatilidad para poder utilizar el mismo Script para más enemigos. Se pueden retocar parámetros como la fuerza de salto o la aceleración y deceleración del enemigo.
+
 [EnemyMovement](Scripts/Enemy/EnemyMovement.cs) 
+
 EnemyStateController: El script de “EnemyStateController” se asemeja a  una máquina de estados que funciona con ayuda del Animator. El enemigo cuenta con tres estados funcionales: Idle, Patrol y Chase.
 
 El enemigo funciona de la siguiente manera: cuando se inicia el ejecutable, el enemigo empieza desde el estado de Idle durante un tiempo determinado  (que se puede configurar en el Inspector) y cuando se alcanza ese tiempo, se cambia al estado de Patrol y el enemigo empieza a moverse. Para cambiar de estado, se utiliza la función “ChangeState”, que cambia el estado actual por uno nuevo. Estando en el estado de Patrol, el enemigo avanzará hasta la pared o abismo que haya en la dirección que avanzó (normalmente izquierda).
@@ -28,9 +30,22 @@ El script de “ReturnChase” sirve para cambiar al estado de Chase, y está se
 
 ## PLAYER: Esta carpeta incluye los scripts relacionados con la configuración del jugador.
 
-PlayerData:
+PlayerData: El script de “PlayerData” almacena todos los parámetros relacionados con el jugador que puedan variar en el gameplay de un videojuego. Algunos ejemplos serían la vida, la resistencia, los coleccionables, etc. Además de eso, también se encarga de gestionar los puntos de control y el “respawn” del jugador, de manera que cuando la vida sea 0 o inferior, el jugador regrese al último punto de control por el que haya pasado.
+
 [PlayerData](Scripts/Player/PlayerData.cs)
-PlayerMovement:
+
+PlayerMovement: El script de “PlayerMovement” es el script más complejo de este proyecto. Este script se encarga de gestionar el movimiento del jugador utilizando el componente RigidBody, y este se realizará mediante Inputs (botones) que se pueden cambiar en cualquier momento (programación / Input Manager). El personaje es capaz de caminar, saltar y ejecutar acelerones presionando cierta tecla. En cuanto a las variables utilizadas, al ser demasiadas y para conservar el orden y limpieza en el script, se han separado de la misma forma que el Enemigo (mediante “Headers”). La mayoría de variables que son públicas se pueden cambiar en el inspector a conveniencia, aunque también se le pueden asignar valores que sean predeterminados por programación.
+ 
+Se puede observar que la función de “Update” ejecuta varias funciones a la vez. Esto se hace con el objetivo de facilitar la lectura del código al programa, así como también para estructurar el código.
+La función de “Start” se asegura de que al comenzar el juego, el personaje esté mirando hacia la derecha y de que la gravedad se aplica correctamente. 
+La función de “GetInputs” se encarga de asignar acciones a las correspondientes teclas (o botones si hubiera).
+La función de “SetAnimatorParameters” sirve para que el “Animator” pueda ejecutar las animaciones del personaje mediante condiciones. 
+La función “Movement” se utiliza para juntar el movimiento horizontal y el vertical, además de asignar una dirección para aplicar la velocidad sobre el Rigidbody.
+Las funciones de “Direction” y “Flip” se encargan de que los sprites se den la vuelta cuando el jugador cambia la dirección en la que se dirige.
+La función de “HorizonalMovement” permite que el jugador se pueda desplazar en el eje Horizontal a una velocidad determinada por dos variables: “playerAcceleration” y “playerDeceleration” (pueden ser cambiadas en el inspector). 
+La función de VerticalMovement” permite al jugador desplazarse en el eje Vertical al ejecutar un salto. Este salto varía dependiendo del tiempo que el jugador pulse la tecla de salto, y depende de dos variables: jumpForce e isGrounded (ambas pueden ser asiganadas en el inspector o mediante programación). La variable jumpForce determina (como su nombre indica) la fuerza de salto del jugador, mientras que la variable isGrounded comprueba si el jugador está en contacto con el suelo y, en el caso de que no esté en el suelo, no se podrá ejecutar la acción de saltar (para que no se pueda saltar infinitamente). La fuerza de gravedad se encargará de que el personaje vuelva al suelo. 
+Por último, la función de “GroundCheck” generará un círculo cuya función es detectar la layer “Ground” que tiene el suelo. Como este círculo no es visible, la función “OnDrawGizmosSelected” se encargará de dibujar un círculo colocado en el mismo punto, solucionando así el problema.
+
 [PlayerMovement](Scripts/Player/PlayerMovement.cs)
 
 ## SCENE SETTINGS: Esta carpeta incluye los scripts relacionados con la configuración de las escenas.
